@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Control de Arduino</title>
+</head>
+<body>
+  <h1>Control de Servo y Motor</h1>
+
+  <button onclick="sendCommand('S1')">Accionar Servo</button>
+  <button onclick="sendCommand('M+1')">Motor Adelante</button>
+  <button onclick="sendCommand('M-1')">Motor Atras</button>
+
+  <script>
+    let port;
+    let writer;
+
+    // Conectar al puerto serial
+    async function connect() {
+      try {
+        console.log("Solicitando acceso al puerto...");
+        port = await navigator.serial.requestPort();
+        await port.open({ baudRate: 9600 });
+        writer = port.writable.getWriter();
+        console.log("Conexión establecida.");
+      } catch (error) {
+        console.error("Error al conectar al puerto serial:", error);
+      }
+    }
+
+    // Enviar comando al Arduino
+    async function sendCommand(command) {
+      if (!port) {
+        await connect(); // Si no hay conexión, intentamos conectarnos
+      }
+
+      if (port && writer) {
+        try {
+          const encoder = new TextEncoder();
+          await writer.write(encoder.encode(command + '\n'));
+          console.log("Comando enviado:", command);
+        } catch (writeError) {
+          console.error("Error al enviar el comando:", writeError);
+        }
+      } else {
+        console.log("Fallo en la conexión al puerto serial.");
+      }
+    }
+  </script>
+</body>
+</html>

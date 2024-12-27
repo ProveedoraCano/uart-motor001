@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Control de Servo y Motor con Arduino</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      color: #333;
+      text-align: center;
+      padding: 20px;
+    }
+    h1 {
+      color: #4CAF50;
+    }
+    .button-container {
+      margin-top: 20px;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 18px;
+      margin: 10px;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    .emoji {
+      font-size: 20px;
+      margin-right: 8px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Controla tu Servo y Motor desde el navegador</h1>
+  <p>Usa los botones para controlar el servomotor y el motor DC.</p>
+
+  <div class="button-container">
+    <button onclick="sendCommand('S1')"><span class="emoji">🔁</span>Servo: Gira 180°</button>
+    <button onclick="sendCommand('M+1')"><span class="emoji">⏩</span>Motor: Adelante 1s</button>
+    <button onclick="sendCommand('M-1')"><span class="emoji">⏪</span>Motor: Atrás 1s</button>
+  </div>
+
+  <script>
+    let port;
+    let writer;
+
+    // Conectar al puerto serial
+    async function connect() {
+      try {
+        console.log("Solicitando acceso al puerto...");
+        port = await navigator.serial.requestPort();
+        await port.open({ baudRate: 9600 });
+        writer = port.writable.getWriter();
+        console.log("Conexión establecida al puerto serial.");
+      } catch (error) {
+        console.error("Error al conectar al puerto serial:", error);
+        alert("Hubo un error al intentar conectarse al puerto serial. Asegúrate de que el puerto no esté en uso por otro programa.");
+      }
+    }
+
+    // Enviar comando al Arduino
+    async function sendCommand(command) {
+      if (!port) {
+        console.log("No se ha conectado al puerto serial. Intentando conectar...");
+        await connect(); // Si no hay conexión, intentamos conectarnos
+      }
+
+      if (port && writer) {
+        // Depuración: Mostrar el comando que se está enviando
+        console.log("Comando enviado: ", command);
+
+        try {
+          // Asegurarse de que la conexión esté abierta antes de enviar
+          const encoder = new TextEncoder();
+          await writer.write(encoder.encode(command + '\n'));
+          console.log("Comando enviado correctamente.");
+        } catch (writeError) {
+          console.error("Error al enviar el comando:", writeError);
+        }
+      } else {
+        console.log("Fallo en la conexión al puerto serial o en la inicialización del writer.");
+      }
+    }
+  </script>
+</body>
+</html>
