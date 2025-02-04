@@ -1,108 +1,151 @@
-#Control de Motor y Servo con Arduino desde el Navegador 🌐🚀-
+# Control de Motor y Servo con Arduino desde el Navegador 🌐🚀
 
-¡Bienvenidos al repositorio! Este proyecto te permite controlar un servo motor y un motor DC desde tu navegador usando un Arduino y la Web Serial API. Si quieres experimentar con la programación web, la electrónica y la comunicación serial, ¡este proyecto es perfecto para ti!
+## 🚀 Bienvenidos al repositorio
+Este proyecto te permite **controlar un servo motor y un motor DC desde tu navegador** usando un **Arduino** y la **Web Serial API**. Si quieres experimentar con la **programación web**, la **electrónica** y la **comunicación serial**, ¡este proyecto es perfecto para ti!
 
-🚀 ¿Qué encontrarás aquí?
-En este repositorio encontrarás los siguientes archivos para empezar:
+---
 
-motor2.html: Archivo HTML sin formato, simple y funcional. Perfecto si quieres ver el proyecto sin complicaciones.
-motor1.html: Archivo HTML con formato, incluye botones y estilos para una interfaz más atractiva y fácil de usar.
-uart-motor-ino: El código de Arduino (Sketch) que conecta tu Arduino con los botones del navegador para controlar el motor y el servo.
-🔌 ¿Cómo Funciona el Proyecto?
-Este proyecto utiliza la Web Serial API para permitir que un navegador web se comunique con un Arduino y le envíe comandos para controlar un servo motor y un motor DC.
+## 📂 Archivos en el Repositorio
+- **motor2.html**: Archivo HTML sin formato, simple y funcional.
+- **motor1.html**: Archivo HTML con botones y estilos para una interfaz más atractiva.
+- **uart-motor.ino**: Sketch de Arduino que recibe los comandos del navegador para controlar los motores.
 
-Conexiones
-Servo Motor: Controlado por el pin 9 de Arduino.
-Motor DC: Controlado a través de un controlador L298N, usando los pines 10 y 11 de Arduino.
-Pantalla LCD 16x2: Muestra el estado del sistema (siempre que se use en el sketch de Arduino con soporte LCD).
-🖥️ Instrucciones para Usar
-Paso 1: Prepara el Hardware
-Conecta el servo motor al pin 9 del Arduino.
-Conecta el motor DC al controlador L298N. Conecta los pines IN1 y IN2 del controlador al pin 10 y pin 11 de Arduino.
-Conecta la pantalla LCD 16x2 al bus I2C de Arduino (SDA al pin A4 y SCL al pin A5).
-Asegúrate de que el motor DC tenga suficiente alimentación con una fuente externa, si es necesario.
-Paso 2: Subir el Sketch al Arduino
-Abre el archivo uart-motor-ino en el Arduino IDE.
-Conecta tu Arduino a tu computadora y selecciona el puerto correcto en el IDE.
-Haz clic en Subir para cargar el código en tu Arduino.
-Paso 3: Abre el Archivo HTML
-Si usas motor2.html, solo abre el archivo en tu navegador. No tiene formato, pero es funcional.
+---
 
-Si prefieres una interfaz con más estilo, abre motor1.html. Asegúrate de que tu navegador sea compatible con la Web Serial API (se recomienda usar Chrome o Edge).
+## 🔌 ¿Cómo Funciona?
+Este proyecto usa la **Web Serial API** para permitir la comunicación entre un navegador y un **Arduino**, enviando comandos para controlar un **servo motor** y un **motor DC**.
 
-Conéctate al puerto serial desde tu navegador haciendo clic en el botón correspondiente en el archivo HTML.
+### 🔗 Conexiones
+| Componente       | Pin de Arduino |
+|-----------------|--------------|
+| Servo Motor     | 9            |
+| Motor DC (L298N) | 10 y 11      |
+| LCD 16x2 (I2C)  | SDA - A4, SCL - A5 |
 
-Usa los botones en la página web para controlar el servo motor y el motor DC.
+---
 
-📜 Funcionalidad
-Botón para el Servo Motor: Al hacer clic, el servo motor girará rápido a 180 grados y luego regresará a su posición inicial.
-Botón para el Motor DC: El motor girará en una dirección durante 1 segundo.
-Botón para el Motor DC (opuesto): El motor girará en la dirección contraria durante 1 segundo.
-📦 Requisitos
-Hardware:
-Arduino Uno o compatible.
-Servo motor.
-Motor DC + controlador L298N.
-Pantalla LCD 16x2 (opcional, para mostrar el estado).
-Software:
-Arduino IDE.
-Navegador compatible con Web Serial API (recomendado: Chrome o Edge).
-⚙️ Contribuciones
-Si quieres colaborar o mejorar el proyecto, ¡estarás más que bienvenido! Si encuentras algún error o tienes sugerencias, no dudes en abrir un issue o pull request.
+## 🖥️ Instrucciones
+### Paso 1: Prepara el Hardware
+1. Conecta el **servo motor** al pin **9**.
+2. Conecta el **motor DC** al controlador **L298N**.
+3. Conecta **IN1** e **IN2** del L298N a los pines **10 y 11**.
+4. Conecta la **LCD 16x2** al bus **I2C** (SDA a **A4**, SCL a **A5**).
+5. Asegúrate de alimentar el motor con una fuente externa si es necesario.
 
-📝 License
-Este proyecto está bajo la licencia MIT. Siéntete libre de usar, modificar y compartir.
+### Paso 2: Subir el Sketch a Arduino
+1. Abre **uart-motor.ino** en el **Arduino IDE**.
+2. Conecta el Arduino a tu computadora y selecciona el puerto correcto.
+3. Haz clic en **Subir**.
 
-Motor and Servo Control with Arduino from the Browser 🌐🚀
-Welcome to the repository! This project allows you to control a servo motor and a DC motor from your browser using Arduino and the Web Serial API. If you want to experiment with web programming, electronics, and serial communication, this project is perfect for you!
+### Paso 3: Abre el Archivo HTML
+- Si usas **motor2.html**, solo ábrelo en tu navegador.
+- Si prefieres una interfaz más amigable, usa **motor1.html**.
+- **Usa Chrome o Edge**, ya que soportan la **Web Serial API**.
+- Conéctate al **puerto serial** desde el navegador y **usa los botones** para controlar los motores.
 
-🚀 What’s in the Repo?
-In this repository, you’ll find the following files to get you started:
+---
 
-motor2.html: A simple, unstyled HTML file. Perfect if you want to see the project without any hassle.
-motor1.html: A styled HTML file with buttons and a neat interface for a better user experience.
-uart-motor-ino: The Arduino sketch that connects your Arduino to the browser buttons to control the motor and servo.
-🔌 How Does It Work?
-This project uses the Web Serial API to allow a web browser to communicate with an Arduino and send commands to control a servo motor and a DC motor.
+## 📜 Funcionalidad
+- **Botón Servo Motor**: Gira a **180°** y regresa a su posición inicial.
+- **Botón Motor DC**: Gira **en una dirección** por **1 segundo**.
+- **Botón Motor DC (opuesto)**: Gira **en la dirección contraria** por **1 segundo**.
 
-Connections
-Servo Motor: Controlled by pin 9 on the Arduino.
-DC Motor: Controlled through an L298N motor driver, using pins 10 and 11 on the Arduino.
-LCD 16x2: Displays the system’s status (if used with the Arduino sketch that supports the LCD).
-🖥️ Instructions to Use
-Step 1: Prepare the Hardware
-Connect the servo motor to pin 9 on the Arduino.
-Connect the DC motor to the L298N motor driver. Connect IN1 and IN2 of the driver to pins 10 and 11 on the Arduino.
-Connect the LCD 16x2 to the I2C bus of the Arduino (SDA to A4 and SCL to A5).
-Make sure your DC motor has sufficient power from an external source if needed.
-Step 2: Upload the Sketch to Arduino
-Open the uart-motor-ino file in the Arduino IDE.
-Connect your Arduino to your computer and select the correct port in the IDE.
-Click Upload to load the code onto your Arduino.
-Step 3: Open the HTML File
-If using motor2.html, simply open the file in your browser. It’s unstyled but works fine.
+---
 
-If you prefer a more stylish interface, open motor1.html. Ensure your browser supports the Web Serial API (recommended: Chrome or Edge).
+## 📦 Requisitos
+### 🔧 Hardware
+- **Arduino Uno o compatible**
+- **Servo motor**
+- **Motor DC + controlador L298N**
+- **Pantalla LCD 16x2 (opcional)**
 
-Connect to the serial port from your browser by clicking the appropriate button in the HTML file.
+### 🖥️ Software
+- **Arduino IDE**
+- **Navegador compatible con Web Serial API (Chrome o Edge)**
 
-Use the buttons on the webpage to control the servo motor and DC motor.
+---
 
-📜 Functionality
-Servo Motor Button: When clicked, the servo motor will quickly rotate to 180 degrees and return to the initial position.
-DC Motor Button: The motor will rotate in one direction for 1 second.
-DC Motor (opposite) Button: The motor will rotate in the opposite direction for 1 second.
-📦 Requirements
-Hardware:
-Arduino Uno or compatible.
-Servo motor.
-DC motor + L298N motor driver.
-LCD 16x2 screen (optional, for status display).
-Software:
-Arduino IDE.
-Web browser compatible with the Web Serial API (recommended: Chrome or Edge).
-⚙️ Contributions
-If you'd like to collaborate or improve the project, feel free to do so! If you find any issues or have suggestions, don't hesitate to open an issue or pull request.
+## ⚙️ Contribuciones
+¡Cualquier mejora o sugerencia es bienvenida! Si encuentras errores, abre un **issue** o un **pull request**.
 
-📝 License
-This project is under the MIT license. Feel free to use, modify, and share.
+---
+
+## 📝 Licencia
+Este proyecto está bajo la licencia **MIT**. Puedes usarlo, modificarlo y compartirlo libremente.
+
+---
+
+# Motor and Servo Control with Arduino from the Browser 🌐🚀
+
+## 🚀 Welcome to the Repository
+This project allows you to **control a servo motor and a DC motor from your browser** using **Arduino** and the **Web Serial API**. If you want to explore **web programming, electronics, and serial communication**, this project is for you!
+
+---
+
+## 📂 Repository Files
+- **motor2.html**: Simple, unstyled HTML file.
+- **motor1.html**: Styled HTML file with buttons for a better UI.
+- **uart-motor.ino**: Arduino sketch to control motors via browser commands.
+
+---
+
+## 🔌 How It Works?
+This project uses the **Web Serial API** to enable communication between a **web browser** and **Arduino**, sending commands to control a **servo motor** and a **DC motor**.
+
+### 🔗 Connections
+| Component       | Arduino Pin |
+|----------------|------------|
+| Servo Motor    | 9          |
+| DC Motor (L298N) | 10 & 11  |
+| LCD 16x2 (I2C) | SDA - A4, SCL - A5 |
+
+---
+
+## 🖥️ How to Use
+### Step 1: Set Up the Hardware
+1. Connect the **servo motor** to pin **9**.
+2. Connect the **DC motor** to the **L298N driver**.
+3. Connect **IN1 & IN2** of the L298N to **pins 10 & 11**.
+4. Connect the **LCD 16x2** to the **I2C bus** (SDA to **A4**, SCL to **A5**).
+5. Ensure the **DC motor** has sufficient power from an external source if needed.
+
+### Step 2: Upload the Sketch to Arduino
+1. Open **uart-motor.ino** in **Arduino IDE**.
+2. Connect Arduino to your PC and select the correct port.
+3. Click **Upload**.
+
+### Step 3: Open the HTML File
+- If using **motor2.html**, open it in your browser.
+- For a better interface, use **motor1.html**.
+- **Use Chrome or Edge**, as they support **Web Serial API**.
+- **Connect to the serial port** from your browser and use the **buttons** to control the motors.
+
+---
+
+## 📜 Functionality
+- **Servo Motor Button**: Moves to **180°** and returns to start.
+- **DC Motor Button**: Rotates **in one direction** for **1 second**.
+- **DC Motor (opposite) Button**: Rotates **in the opposite direction** for **1 second**.
+
+---
+
+## 📦 Requirements
+### 🔧 Hardware
+- **Arduino Uno or compatible**
+- **Servo motor**
+- **DC motor + L298N driver**
+- **LCD 16x2 screen (optional)**
+
+### 🖥️ Software
+- **Arduino IDE**
+- **Web browser with Web Serial API support (Chrome or Edge)**
+
+---
+
+## ⚙️ Contributions
+Any improvements or suggestions are welcome! Feel free to open an **issue** or **pull request**.
+
+---
+
+## 📝 License
+This project is licensed under the **MIT License**. You are free to use, modify, and share it.
